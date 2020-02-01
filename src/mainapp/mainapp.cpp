@@ -1,5 +1,5 @@
-#include "mainapp/mainapp.hpp"
-#include "mainapp/mainframe.hpp"
+#include "mainapp.hpp"
+#include "../mainframe/mainframe.hpp"
 
 wxIMPLEMENT_APP(ExtfixGUI);
 

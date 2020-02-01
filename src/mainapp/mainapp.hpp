@@ -1,11 +1,7 @@
-// Copyright (c) 2020 Marcin Czerwonka
-//
-// This software is released under the MIT License.
-// https://opensource.org/licenses/MIT
 #pragma once
 
-#include <wx/wx.h>
-#include "mainframe.hpp"
+#include <wx/app.h>
+#include "../mainframe/mainframe.hpp"
 
 class ExtfixGUI : public wxApp
 {

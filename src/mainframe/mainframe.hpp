@@ -1,18 +1,12 @@
 #pragma once
 
-#include <wx/wx.h>
+#include <wx/wxprec.h>
+#ifndef WX_PRECOMP
+    #include <wx/wx.h>
+#endif
+
 #include <unordered_set>
 #include <string>
-
-enum
-{
-	MainFrame_ID_PickFile,
-	MainFrame_ID_PickDir,
-	MainFrame_ID_RemoveItemsAtSelection,
-	MainFrame_ID_AddItemsFromPath,
-	MainFrame_ID_RemoveAllItems
-
-};
 
 class MainFrame : public wxFrame
 {
@@ -34,5 +28,8 @@ class MainFrame : public wxFrame
 	void UpdateListBoxContents();
 
   private:
+	void makeMenuBar() noexcept;
+	void setUpEvents() noexcept;
+
 	std::unordered_set<std::string> filesToProcess;
 };
