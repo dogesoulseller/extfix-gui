@@ -52,11 +52,11 @@ MainFrame::MainFrame() : wxFrame(NULL, wxID_ANY, "extfix-gui", wxDefaultPosition
     wxButton* removeItemsSelected_btn = new wxButton(panel, MainFrame_ID_RemoveItemsAtSelection, "Delete");
     processRecursively_chb = new wxCheckBox(panel, -1, "Process dirs recursively");
     hboxDirCheckbox->Add(processRecursively_chb, 0, wxLEFT);
-    hboxListButtons->Add(addItemsFromPath_btn, 0, wxALIGN_RIGHT | wxRIGHT, 5);
-    hboxListButtons->Add(removeItemsSelected_btn, 0, wxALIGN_RIGHT | wxRIGHT, 5);
+    hboxListButtons->Add(addItemsFromPath_btn, 0, wxRIGHT, 5);
+    hboxListButtons->Add(removeItemsSelected_btn, 0, wxRIGHT, 5);
 
     hboxListControls->Add(hboxDirCheckbox, 1, wxALIGN_LEFT | wxTOP | wxBOTTOM | wxRIGHT, 10);
-    hboxListControls->Add(hboxListButtons, 0, wxALIGN_RIGHT | wxLEFT | wxTOP | wxBOTTOM | wxRIGHT, 10);
+    hboxListControls->Add(hboxListButtons, 0, wxLEFT | wxTOP | wxBOTTOM | wxRIGHT, 10);
 
     vbox->Add(hboxListControls, 0, wxALIGN_RIGHT | wxTOP | wxBOTTOM | wxRIGHT, 10);
 
