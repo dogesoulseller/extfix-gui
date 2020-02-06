@@ -1,3 +1,6 @@
 [submodule "external/weirdlib"]
 	path = external/weirdlib
 	url = https://github.com/dogesoulseller/weirdlib
+[submodule "external/wxWidgets"]
+	path = external/wxWidgets
+	url = https://github.com/wxWidgets/wxWidgets
