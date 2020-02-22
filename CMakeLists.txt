@@ -3,7 +3,8 @@ project(extfix-gui)
 
 find_program(CCACHE_FOUND "ccache")
 if (CCACHE_FOUND)
-	set(CMAKE_CXX_COMPILER_LAUNCHER ccache)
+	set(CMAKE_CXX_COMPILER_LAUNCHER ${CCACHE_FOUND})
+	set(CMAKE_C_COMPILER_LAUNCHER ${CCACHE_FOUND})
 endif(CCACHE_FOUND)
 
 

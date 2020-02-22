@@ -17,13 +17,20 @@ class MainFrame : public wxFrame
 
 	void OnPickFile(wxCommandEvent& event);
 	void OnPickDir(wxCommandEvent& event);
+	void OnPickOutDir(wxCommandEvent& event);
 
 	void OnRemoveItemsAtSelection(wxCommandEvent& event);
 	void OnAddItemsFromPath(wxCommandEvent& event);
 
+	void OnStartProcessing(wxCommandEvent& event);
+
 	wxTextCtrl* inputPath_ctrl;
+	wxTextCtrl* outputPath_ctrl;
+
 	wxListBox* itemListBox;
+
 	wxCheckBox* processRecursively_chb;
+	wxCheckBox* moveFiles_chb;
 
 	void UpdateListBoxContents();
 

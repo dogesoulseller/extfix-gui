@@ -6,5 +6,7 @@ enum MainFrame_Events
 	MainFrame_ID_PickDir,
 	MainFrame_ID_RemoveItemsAtSelection,
 	MainFrame_ID_AddItemsFromPath,
-	MainFrame_ID_RemoveAllItems
+	MainFrame_ID_RemoveAllItems,
+	MainFrame_ID_StartProcessing,
+	MainFrame_ID_PickOutDir
 };
