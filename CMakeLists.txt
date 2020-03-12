@@ -24,6 +24,9 @@ set(wxUSE_LIBSDL OFF)
 set(wxUSE_LIBMSPACK OFF)
 set(wxUSE_SVG OFF)
 set(wxUSE_ARTPROVIDER_TANGO OFF)
+set(wxUSE_WEBVIEW OFF)
+set(wxUSE_ZIPSTREAM OFF)
+set(wxUSE_ANIMATIONCTRL OFF)
 
 add_subdirectory(external/wxWidgets)
 
