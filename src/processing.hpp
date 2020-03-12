@@ -43,13 +43,19 @@ inline void FixFileExtensions(const std::unordered_set<std::string>& files, cons
 
 				std::filesystem::copy_file(filesToWrite[i].first, outputPath / filesToWrite[i].second, ecCopy);
 				if (ecCopy) {
-					wxMessageBox("Failed to copy file "s + filesToWrite[i].first, "Error copying file", wxICON_ERROR);
+					if (auto response = wxMessageBox("Failed to copy file "s + filesToWrite[i].first, "Error copying file", wxICON_ERROR | wxOK | wxCANCEL);
+					  response == wxCANCEL) {
+						break;
+					}
 					continue;
 				}
 
 				std::filesystem::remove(filesToWrite[i].first, ecRemove);
 				if (ecRemove) {
-					wxMessageBox("Failed to remove file "s + filesToWrite[i].first, "Error deleting file", wxICON_ERROR);
+					if (auto response = wxMessageBox("Failed to remove file "s + filesToWrite[i].first, "Error deleting file", wxICON_ERROR | wxOK | wxCANCEL);
+					  response == wxCANCEL) {
+						break;
+					}
 					continue;
 				}
 			}
@@ -60,7 +66,10 @@ inline void FixFileExtensions(const std::unordered_set<std::string>& files, cons
 			std::filesystem::copy_file(filesToWrite[i].first, outputPath / filesToWrite[i].second, ec);
 
 			if (ec) {
-				wxMessageBox("Failed to copy file "s + filesToWrite[i].first, "Error copying file", wxICON_ERROR);
+				if (auto response = wxMessageBox("Failed to copy file "s + filesToWrite[i].first, "Error copying file", wxICON_ERROR | wxOK | wxCANCEL);
+				  response == wxCANCEL) {
+					break;
+				}
 				continue;
 			}
 		}
