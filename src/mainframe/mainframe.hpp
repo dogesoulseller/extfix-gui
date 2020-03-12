@@ -38,5 +38,7 @@ class MainFrame : public wxFrame
 	void makeMenuBar() noexcept;
 	void setUpEvents() noexcept;
 
+	void FixFileExtensions(const std::unordered_set<std::string>& files, const std::string& outputPath, bool doMove);
+
 	std::unordered_set<std::string> filesToProcess;
 };

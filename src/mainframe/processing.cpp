@@ -1,4 +1,4 @@
-#pragma once
+#include "mainframe.hpp"
 
 #include <weirdlib_fileops.hpp>
 
@@ -14,12 +14,10 @@
     #include <wx/wx.h>
 #endif
 
-inline void FixFileExtensions(const std::unordered_set<std::string>& files, const std::string& outputPath, bool doMove) {
+void MainFrame::FixFileExtensions(const std::unordered_set<std::string>& files, const std::string& outputPath, bool doMove) {
 	using namespace std::string_literals;
 	std::vector<std::pair<std::string, std::filesystem::path>> filesToWrite;
 
-	// TODO: Calculate changed file count
-	// TODO: Update status bar
 	for (const auto& file : files) {
 		auto detectedType = wlib::file::DetectFileType(file);
 		auto newName = std::filesystem::path(wlib::file::ChangeExtensionToMatchType(file)).filename();
@@ -30,6 +28,8 @@ inline void FixFileExtensions(const std::unordered_set<std::string>& files, cons
 			filesToWrite.push_back(std::make_pair(file, newName));
 		}
 	}
+
+	size_t filesChanged = 0;
 
 	if (doMove) {
 		for (size_t i = 0; i < filesToWrite.size(); i++) {
@@ -47,8 +47,11 @@ inline void FixFileExtensions(const std::unordered_set<std::string>& files, cons
 					  response == wxCANCEL) {
 						break;
 					}
+
 					continue;
 				}
+
+				filesChanged++;
 
 				std::filesystem::remove(filesToWrite[i].first, ecRemove);
 				if (ecRemove) {
@@ -56,6 +59,7 @@ inline void FixFileExtensions(const std::unordered_set<std::string>& files, cons
 					  response == wxCANCEL) {
 						break;
 					}
+
 					continue;
 				}
 			}
@@ -70,8 +74,16 @@ inline void FixFileExtensions(const std::unordered_set<std::string>& files, cons
 				  response == wxCANCEL) {
 					break;
 				}
+
 				continue;
 			}
+
+			filesChanged++;
 		}
 	}
+
+	std::stringstream statusText;
+	statusText << (doMove ? "Moved "s : "Copied "s) << filesChanged << '/' << files.size() << " files";
+
+	SetStatusText(statusText.str());
 }
