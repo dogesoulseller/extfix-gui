@@ -23,7 +23,7 @@ void MainFrame::FixFileExtensions(const std::unordered_set<std::string>& files, 
 		auto newName = std::filesystem::path(wlib::file::ChangeExtensionToMatchType(file)).filename();
 
 		if (detectedType == wlib::file::FILETYPE_UNKNOWN) {
-			return;
+			continue;
 		} else {
 			filesToWrite.push_back(std::make_pair(file, newName));
 		}
